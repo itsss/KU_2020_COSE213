@@ -34,6 +34,7 @@ void attach(float coefficient, int exponent) {
     terms[avail++].expon = exponent;
 }
 
+///////////
 void print_polynomial(int a, int b) {
     for( ; a < b; a++) {
         printf("%3.0fx^%d", terms[a].coef, terms[a].expon);
@@ -48,6 +49,7 @@ void print_result() {
     }
     printf("\n");
 }
+///////////
 
 void padd(int starta, int finisha, int startb, int finishb, int *startd, int *finishd) {
     float coefficient;
@@ -76,6 +78,7 @@ void padd(int starta, int finisha, int startb, int finishb, int *startd, int *fi
     *finishd = avail-1;
 }
 
+///////////
 int main() {
     int i, j;
     scanf("%d", &i); // 다항식 A 항 개수 입력 받기
@@ -104,3 +107,4 @@ int main() {
     
     print_result();
 }
+///////////
