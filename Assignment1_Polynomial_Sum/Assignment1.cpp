@@ -11,9 +11,9 @@
 
 #define MAX_TERMS 100
 
-///////////
+//////////////////////////////////////////////////////////////////////////////
 #define COMPARE(x,y) (((x) < (y)) ? -1 : ((x) == (y)) ? 0 : 1)
-///////////
+//////////////////////////////////////////////////////////////////////////////
 
 typedef struct {
     float coef;
@@ -34,7 +34,7 @@ void attach(float coefficient, int exponent) {
     terms[avail++].expon = exponent;
 }
 
-///////////
+//////////////////////////////////////////////////////////////////////////////
 void print_polynomial(int a, int b) {
     for( ; a < b; a++) {
         printf("%3.0fx^%d", terms[a].coef, terms[a].expon);
@@ -49,7 +49,7 @@ void print_result() {
     }
     printf("\n");
 }
-///////////
+//////////////////////////////////////////////////////////////////////////////
 
 void padd(int starta, int finisha, int startb, int finishb, int *startd, int *finishd) {
     float coefficient;
@@ -78,11 +78,11 @@ void padd(int starta, int finisha, int startb, int finishb, int *startd, int *fi
     *finishd = avail-1;
 }
 
-///////////
+//////////////////////////////////////////////////////////////////////////////
 int main() {
     int i, j;
     scanf("%d", &i); // 다항식 A 항 개수 입력 받기
-    
+
     // 다항식 A 입력 받기
     start_a = 0;
     for(int j = start_a; j < i; j++) {
@@ -90,8 +90,9 @@ int main() {
         scanf("%d", &terms[j].expon);
     }
     finish_a = i-1;
+    printf("A(X) = ");
     print_polynomial(start_a, finish_a);
-    
+
     scanf("%d", &j); // 다항식 B 항 개수 입력 받기
     start_b = finish_a + 1;
     finish_b = start_b + (j);
@@ -101,10 +102,12 @@ int main() {
         scanf("%d", &terms[k].expon);
     }
     avail = finish_b + 1;
+    printf("B(X) = ");
     print_polynomial(start_b, finish_b-1);
-    
+
     padd(start_a, finish_a, start_b, finish_b, &start_c, &finish_c);
-    
+
+    printf("C(X) = A(X) + B(X) = ");
     print_result();
 }
-///////////
+//////////////////////////////////////////////////////////////////////////////
